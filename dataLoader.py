@@ -2,7 +2,7 @@ import mxnet as mx
 import mxnet.ndarray as F
 import numpy as np
 from PIL import Image
-
+from mxnet.gluon.data.vision import transforms
 
 def img_transform(img, ctx):
     img_array = np.array([np.asarray(img)])
@@ -11,6 +11,11 @@ def img_transform(img, ctx):
 def _mask_transform(mask, ctx):
     mask_array = np.array([np.asarray(mask)])
     return mx.nd.array(mask_array, ctx[0]).astype('int32')
+
+input_transform = transforms.Compose([
+            transforms.ToTensor(),
+        ])
+
 
 image_folder = 'data/images/'
 mask_folder = 'data/annotations1/'
@@ -39,6 +44,7 @@ def getImages(ctx, NDVI):
         img= img_transform(img,ctx)
         mask = _mask_transform(mask,ctx)
 
+        img = input_transform(img)
         img = F.array(img, ctx[0])
         images.append(img)
         masks.append(mask)
