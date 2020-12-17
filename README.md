@@ -2,10 +2,10 @@
 Check out the requirements.txt for the required libraries.
 The images are provided in data.
 
-#Vegetation Mask
+# Vegetation Mask
 The code for vegetation masks are in files histogram.py, k_means.py and NDVI.py for the 3 approaches.
 
-#Classification
+# Classification
 The classification Trainer should be run from command line:
 
 python3 trainer.py
