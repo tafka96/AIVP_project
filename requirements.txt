@@ -1,0 +1,5 @@
+mxnet==1.6.0
+numpy==1.16.6
+gluoncv==0.8.0
+Pillow==7.0.0
+scikit_learn==0.23.2
